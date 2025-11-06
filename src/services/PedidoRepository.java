@@ -1,13 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package services;
 
-/**
- *
- * @author Personal
- */
+import models.Pedido;
+
 public class PedidoRepository {
-    
+    private int secuencia = 1000;
+    public String registrar(Pedido p) { return "ORD-" + (secuencia++); }
 }
+
