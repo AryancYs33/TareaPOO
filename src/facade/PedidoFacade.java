@@ -35,3 +35,10 @@ double subtotal = Math.round(p.getPrecio() * cantidad * 100.0) / 100.0;
         String orden = pedidoRepo.registrar(pedido);
         String factura = facturaService.generarFactura(cliente, producto, total);
         
+ return String.format(
+            "\n=== COMPROBANTE ===\nCliente: %s\nProducto: %s\nCantidad: %d\nSubtotal: %.2f\nIGV: %.2f\nTotal: %.2f\nOrden: %s\nFactura: %s\n===================",
+            cliente, producto, cantidad, subtotal, igv, total, orden, factura
+        );
+    }
+}
+        
