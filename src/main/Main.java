@@ -16,3 +16,20 @@ public class Main {
                 new PedidoRepository(),
                 new FacturaAdapter()
         ); 
+
+Scanner sc = new Scanner(System.in);
+        System.out.println("=== Registro de Pedido (Facade + Adapter) ===");
+        System.out.print("Cliente: ");
+        String cliente = sc.nextLine();
+        System.out.print("Producto (laptop/mouse/teclado): ");
+        String producto = sc.nextLine();
+        System.out.print("Cantidad: ");
+        int cantidad = Integer.parseInt(sc.nextLine());
+        
+try {
+            System.out.println(facade.procesarPedido(cliente, producto, cantidad));
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
