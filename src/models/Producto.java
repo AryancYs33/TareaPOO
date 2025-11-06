@@ -10,3 +10,10 @@ public class Producto {
         this.stock = stock;
         this.precio = precio;
     }
+    
+ public String getNombre() { return nombre; }
+    public int getStock() { return stock; }
+    public double getPrecio() { return precio; }
+
+    public void disminuirStock(int cantidad) { this.stock -= cantidad; }
+}
