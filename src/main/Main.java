@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package main;
 
-/**
- *
- * @author Personal
- */
-public class Main {
-    
-}
+import adapter.FacturaAdapter;
+import facade.PedidoFacade;
+import services.PedidoRepository;
+import services.StockService;
+import services.TaxService;
+import java.util.Scanner;

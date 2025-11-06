@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package legacy;
 
-/**
- *
- * @author Personal
- */
 public class LegacyBillingSystem {
-    
+     public String emitirFactura(String razonSocial, String ruc, double monto) {
+        return "LEGACY-INVOICE{" + razonSocial + "|" + ruc + "|TOTAL=" + monto + "}";
+    }
 }
