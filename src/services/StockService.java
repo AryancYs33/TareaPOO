@@ -12,7 +12,6 @@ public class StockService {
         inventario.put("mouse",    new Producto("mouse",    20,   45.0));
         inventario.put("teclado",  new Producto("teclado",  15,   80.0));
     }
-    
 
     public Producto buscar(String nombreProducto) {
         return inventario.get(nombreProducto.toLowerCase());
@@ -24,5 +23,11 @@ public class StockService {
         if (p.getStock() < cantidad) throw new IllegalArgumentException("Stock insuficiente para " + p.getNombre());
     }
 
-    public void reservar(Producto p, int cantidad) { p.disminuirStock(cantidad); }
+    public void reservar(Producto p, int cantidad) {
+        p.disminuirStock(cantidad);
+    }
+
+    public void agregarProducto(String nombre, int stock, double precio) {
+        inventario.put(nombre.toLowerCase(), new Producto(nombre, stock, precio));
+    }
 }
