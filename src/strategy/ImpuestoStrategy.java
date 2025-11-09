@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package strategy;
 
-/**
- *
- * @author Personal
- */
-public class ImpuestoStrategy {
-    
+public interface ImpuestoStrategy {
+    double calcular(double subtotal);
+    default String nombre() { return getClass().getSimpleName(); }
 }
