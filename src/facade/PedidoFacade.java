@@ -11,7 +11,7 @@ public class PedidoFacade {
     private final StockService stockService;
     private final PedidoRepository pedidoRepo;
     private final FacturaService facturaService;
-    private strategy.ImpuestoStrategy impuestoStrategy;
+    private ImpuestoStrategy impuestoStrategy;
 
     public PedidoFacade(StockService stockService,
                         PedidoRepository pedidoRepo,
@@ -27,7 +27,7 @@ public class PedidoFacade {
         this.impuestoStrategy = impuestoStrategy;
     }
 
-    public String procesarPedido(String cliente, String producto, int cantidad) {
+    public Pedido crearPedido(String cliente, String producto, int cantidad) {
         Producto p = stockService.buscar(producto);
         stockService.validarStock(p, cantidad);
         stockService.reservar(p, cantidad);
@@ -39,23 +39,12 @@ public class PedidoFacade {
         String orden = pedidoRepo.nextOrden();
         Pedido pedido = new Pedido(cliente, p, cantidad, subtotal, igv, total, orden);
         pedidoRepo.guardar(pedido);
-
-        String factura = facturaService.generarFactura(cliente, producto, total);
-
-        return String.format(
-            "\n=== COMPROBANTE ===" +
-            "\nCliente: %s" +
-            "\nProducto: %s" +
-            "\nCantidad: %d" +
-            "\nSubtotal: %.2f" +
-            "\nImpuesto (%s): %.2f" +
-            "\nTotal: %.2f" +
-            "\nOrden: %s" +
-            "\nFactura: %s" +
-            "\n===================",
-            cliente, producto, cantidad,
-            subtotal, impuestoStrategy.nombre(), igv,
-            total, orden, factura
-        );
+        return pedido;
     }
-}       
+
+    public String generarFactura(Pedido pedido) {
+        return facturaService.generarFactura(pedido.getCliente(),
+                pedido.getProducto().getNombre(),
+                pedido.getTotal());
+    }
+}
