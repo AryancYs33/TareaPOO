@@ -1,13 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package observer;
 
-/**
- *
- * @author Personal
- */
-public class InventarioObserver {
-    
+import models.Pedido;
+
+public class InventarioObserver implements Observer {
+    @Override
+    public void onNotify(EventType type, Pedido pedido, String extraInfo) {
+        if (type == EventType.PEDIDO_CREADO) {
+            System.out.printf("Stock actualizado: %s -> quedan %d unidades.%n",
+                    pedido.getProducto().getNombre(),
+                    pedido.getProducto().getStock());
+        }
+    }
 }

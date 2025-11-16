@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package observer;
 
-/**
- *
- * @author Personal
- */
-public class Observer {
-    
+import models.Pedido;
+
+public interface Observer {
+    void onNotify(EventType type, Pedido pedido, String extraInfo);
 }
